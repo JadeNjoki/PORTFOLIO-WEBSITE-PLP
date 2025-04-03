@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #FFF;
+}
+
+/* Header */
+header {
+    background-color: #000;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Keeps the navbar fixed at the top */
+    width: 100%;
+    top: 0;
+    z-index: 1000; /* Ensures it stays above other elements */
+}
+
+body {
+    padding-top: 80px; /* Adjust to prevent content from being hidden under the navbar */
+}
+
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFF;
+    padding-left: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+    position: relative;
+}
+
+nav ul li a {
+    color: #FFF;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    transition: color 0.3s ease-in-out;
+    position: relative;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #FFD700;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 3px;
+    background-color: #FFD700;
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+    width: 100%;
+}
+
+/* Home Section */
+.home-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10%;
+        max-width: 1100px;
+        height: 80vh;
+        margin: auto;
+    }
+
+    .text-section {
+        flex: 1;
+        text-align: left;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .name {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    .changing-text {
+        color: #FFD700;
+        font-weight: bold;
+    }
+
+    .description {
+        margin-top: 10px;
+        font-size: 1rem;
+        opacity: 0.8;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: rgb(84, 166, 166);
+        color: black;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+
+    .btn:hover {
+        background-color: white;
+    }
+
+    /* Right Image Section */
+    .image-section {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .image-section img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 10px;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+        .home-container {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .text-section, .image-section {
+            width: 100%;
+            text-align: center;
+        }
+
+        .image-section img {
+            width: 80%;
+            max-width: 300px;
+        }
+    }
+
+/* About Section */
+.about-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        max-width: 900px;
+        margin: auto;
+        gap: 20px;
+    }
+
+    .about-image {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .about-image img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 20px;
+    }
+
+    .about-content {
+        flex: 1;
+        text-align: left;
+        max-width: 350px;
+    }
+
+    .tabs {
+        margin-top: 10px;
+    }
+
+    .tab {
+        background: #FFD700;
+        border: none;
+        padding: 8px 15px;
+        margin-right: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .tab.active {
+        background: #222;
+        color: white;
+    }
+
+    .tab-content {
+        margin-top: 15px;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+        .about-container {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 100%;
+            padding: 20px;
+        }
+    }
+
+/* Resume Grid */
+.resume-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 30px;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .resume-item {
+        background: #222;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: left;
+    }
+
+    .resume-item h2 {
+        color: #FFD700;
+    }
+
+/* Tabs */
+.tabs {
+    display: flex;
+    margin-top: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    background: #444;
+    color: white;
+    border: none;
+    margin-right: 5px;
+}
+
+.tab:hover, .tab.active {
+    background: #FFD700;
+    color: black;
+}
+
+.tab-content {
+    display: none;
+    margin-top: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Skills Section */
+.skills-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 70%;
+}
+
+.skills-column {
+    width: 45%;
+}
+
+.skill {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.skill-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFD700;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #333;
+    height: 10px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #f4a300;
+    width: 0%;
+    border-radius: 5px;
+    transition: width 2s ease-in-out;
+}
+
+/* Fix for Circular Skills Representation */
+.circle-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 8px solid #f4a300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    background: conic-gradient(#333 0% 100%);
+    transition: background 2s ease-in-out;
+}
+/* Projects */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+    gap: 30px; /* Space between cards */
+    padding: 20px;
+    max-width: 900px; /* Adjust width */
+    margin: auto;
+}
+
+.project-card {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: scale(1.05); /* Slight enlargement on hover */
+}
+
+.project-card h3 {
+    color: #FFD700;
+}
+
+.project-card p {
+    margin-top: 10px;
+}
+
+.project-card a {
+    display: block;
+    margin-top: 10px;
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+
+.contact-container {
+    width: 60%;
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);    
+    margin: auto; /* Centers it horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content inside */
+    justify-content: center;  
+    }
+.contact-container h2 {
+    text-align: center;
+    color: #f4a300;
+    }
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:100%
+    }
+.contact-form label {
+    margin: 10px 0 5px;
+    color: #ccc;
+    }
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background: #333;
+    color: #fff;
+    }
+.contact-form button {
+    background: #f4a300;
+    color: #000;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    }
+.contact-form button:hover {
+    background: #d18c00;
+    }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">JADE</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="home-container">
+        <div class="text-section">
+            <h1 style="color: #FFD700;">Hello, I'm Jade Njoki</h1>
+            <div class="name" style="color: #FFD700;">Data Analyst & Front-end Developer</div>
+            <p>Passionate about transforming data into insights and building interactive, user-friendly web solutions.</p>
+            <p class="description">With expertise in data analysis, visualization, and front-end development, I create impactful solutions that drive results.</p><br>
+            <a href="Curriculum Vitae.pdf" download class="btn" style="background-color: #FFD700;">Download CV</a>
+        </div>
+        <div class="image-section">
+            <img src="jade.png.png" alt="Jade Njoki">
+        </div>
+    </section><br>
+    
+    <section id="about" class="section about-container">
+        <div class="about-image">
+            <img src="jade.png.png" alt="Profile Image">
+        </div>
+        <div class="about-content">
+            <h1>About Me</h1>
+            <p>I'm a data analyst and web developer passionate about transforming raw data into insights.</p>
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('skills', this)">Skills</button>
+                <button class="tab" onclick="showTab('experience', this)">Experience</button>
+                <button class="tab" onclick="showTab('education', this)">Education</button>
+            </div>
+            <div id="skills" class="tab-content active">
+                <ul>
+                    <li>Frontend Development - Building responsive and user-friendly websites</li><br>
+                    <li>Data Analysis - Interpreting complex datasets to uncover meaningful insights</li><br>
+                </ul>
+            </div>
+            <div id="experience" class="tab-content" style="display: none;">
+                <ul>
+                    <li>2021 - Current | JKUAT – Data Science & Analytics - Studying data science, analytics, and machine learning</li><br>
+                    <li>2025 - Current | PLP Academy – Full-Stack MERN - Learning front-end and back-end development</li><br>
+                    <li>2024 | Django Web Development - Gained experience in Python and Django</li><br>
+                </ul>
+            </div>
+            <div id="education" class="tab-content" style="display: none;">
+                <ul>
+                    <li>2025 | PLP Hackathon - Built a portfolio website using HTML & CSS</li><br>
+                    <li>2024 - Current | Web Development Projects - Developed websites and web applications</li><br>
+                    <li>2023 - Current | Data Analysis Projects - Analyzed datasets and created visualizations</li><br>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume">
+        <h1 style="text-align:center; color:#FFD700;">My Resume</h1>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 20px; max-width: 1000px; margin: auto;">
+            <div style="background: #222; padding: 30px; border-radius: 10px; text-align: left;">
+                <div style="color: gold; font-weight: bold; font-size: 18px;">2021-Present</div>
+                <h2>BSc in Data Science & Analytics</h2>
+                <p>Jomo Kenyatta University of Agriculture and Technology (JKUAT)</p>
+                <p>Currently pursuing a degree specializing in Data Science and Analytics.</p>
+            </div>
+            <div style="background: #222; padding: 30px; border-radius: 10px; text-align: left;">
+                <div style="color: gold; font-weight: bold; font-size: 18px;">2024</div>
+                <h2>AI Career Essentials Certification</h2>
+                <p>ALX</p>
+                <p>Completed a six-week course covering AI, digital personas, content creation, and AI-powered business strategies.</p>
+            </div>
+            <div style="background: #222; padding: 30px; border-radius: 10px; text-align: left;">
+                <div style="color: gold; font-weight: bold; font-size: 18px;">2023-Present</div>
+                <h2>Freelance Data Analyst</h2>
+                <p>Freelance Platforms</p>
+                <p>Providing data analysis services including data visualization, exploratory data analysis, and machine learning modeling.</p>
+            </div>
+            <div style="background: #222; padding: 30px; border-radius: 10px; text-align: left;">
+                <div style="color: gold; font-weight: bold; font-size: 18px;">2022-Present</div>
+                <h2>Django Developer</h2>
+                <p>Freelance & Personal Projects</p>
+                <p>Building dynamic web applications using Django framework, integrating databases, authentication, and RESTful APIs.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="skills">
+        <h1 style="text-align:center; color:#FFD700;">My Skills</h1>
+        
+        <!-- Technical Skills -->
+        <div class="skills-container">
+            <div class="skills-column">
+                <div class="skill">
+                    <span class="skill-name">Python</span>
+                    <div class="progress-bar"><div class="progress-fill" data-percent="90"></div></div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">SQL</span>
+                    <div class="progress-bar"><div class="progress-fill" data-percent="85"></div></div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">Power BI</span>
+                    <div class="progress-bar"><div class="progress-fill" data-percent="88"></div></div>
+                </div>
+            </div>
+            <div class="skills-column">
+                <div class="skill">
+                    <span class="skill-name">Tableau</span>
+                    <div class="progress-bar"><div class="progress-fill" data-percent="80"></div></div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">Excel</span>
+                    <div class="progress-bar"><div class="progress-fill" data-percent="92"></div></div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">Django</span>
+                    <div class="progress-bar"><div class="progress-fill" data-percent="83"></div></div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Professional Skills -->
+       <h2 style="text-align:center; color:#FFD700; margin-top: 30px;">Professional Skills</h2>
+     <div class="circle-container">
+        <div class="circle" data-percent="95"><span>Teamwork</span><br>95%</div>
+        <div class="circle" data-percent="90"><span>Problem Solving</span><br>90%</div>
+        <div class="circle" data-percent="92"><span>Communication</span><br>92%</div>
+        <div class="circle" data-percent="88"><span>Time Management</span><br>88%</div>
+     </div>
+    </section>
+    
+
+    <section id="projects">
+        <h1 style="text-align:center; color:#FFD700;">My Projects</h1>
+        <div class="projects-container">
+            <div class="project-card">
+                <h3>Sales Data Analysis</h3>
+                <p>Performed data analysis using Power BI and Python to uncover sales trends, patterns, and customer purchasing behavior.</p>
+                <a href="http://localhost:8888/notebooks/Untitled.ipynb" target="_blank">View Project</a>
+            </div>
+            <div class="project-card">
+                <h3>Visual Storytelling Portfolio</h3>
+                <p>Created a captivating storytelling presentation using Canva to visually narrate my personal and professional journey through engaging design and animations.</p>
+                <a href="https://jade-chronicles.my.canva.site/" target="_blank">View Project</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>Hotelier Website with Django</h3>
+                <p>Designed and developed a hotel booking website using Django, featuring room listings, booking management, and user authentication for seamless customer experience.</p>
+                <a href="https://github.com/JadeNjoki/MAIN-PROJECT" target="_blank">View Project</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>Movie Data Analysis</h3>
+                <p>Analyzed movie industry data using Power BI to identify trends in genres, revenue, and audience preferences using visualization tools.</p>
+                <a href="https://github.com/JadeNjoki/Movie-Analysis-using-Power-Bi" target="_blank">View Project</a>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <section id="Contact">
+        <h1 style="text-align:center; color:#FFD700;">Contact Me</h1>
+        <div class="contact-container">
+        
+        <form class="contact-form">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+            
+            <label for="email">Your Email</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" placeholder="Enter subject" required>
+            
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" placeholder="Enter your message" required></textarea>
+            
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            document.getElementById("successMessage").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("successMessage").style.display = "none";
+                document.getElementById("contactForm").reset();
+            }, 3000);
+        });
+    </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('.progress-fill').forEach(bar => {
+            let percent = bar.getAttribute('data-percent');
+            bar.style.width = percent + '%';
+        });
+
+        document.querySelectorAll('.circle').forEach(circle => {
+            let percent = circle.getAttribute('data-percent');
+            circle.style.background = `conic-gradient(#f4a300 ${percent}%, #333 ${percent}%)`;
+            circle.textContent = percent + "%";
+        });
+    });
+</script>
+
+<script>
+    function showTab(tabId, element) {
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.style.display = 'none';
+        });
+        document.getElementById(tabId).style.display = 'block';
+        
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        element.classList.add('active');
+    }
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const textElement = document.querySelector(".dynamic-text");
+        const texts = ["Data Analyst", "Front-End Developer"];
+        let index = 0;
+        function changeText() {
+            textElement.style.opacity = 0;
+            setTimeout(() => {
+                index = (index + 1) % texts.length;
+                textElement.textContent = texts[index];
+                textElement.style.opacity = 1;
+            }, 500);
+        }
+        setInterval(changeText, 3000);
+    });
+</script>
+
+<script>
+    document.querySelectorAll("nav ul li a").forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault(); // Prevent instant jump
+
+            const targetId = this.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop - 50, // Adjust if needed
+                    behavior: "smooth" // Enables smooth scrolling
+                });
+            }
+
+            // Optional: Remove 'active' class from all links & add to clicked one
+            document.querySelectorAll("nav ul li a").forEach(link => link.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
+</script>
+
+
+    
+</body>
+</html>
